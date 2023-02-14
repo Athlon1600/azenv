@@ -1,0 +1,30 @@
+:80 {
+	respond "OK"
+}
+
+{$SITE} {
+	header -Server
+
+	php_fastcgi php_fpm:9000 {
+		trusted_proxies 172.0.0.0/8
+
+		# header_up X-Custom-Real-IP {http.request.remote.host}
+
+		## https://caddyserver.com/docs/caddyfile/directives/reverse_proxy#defaults
+		header_up -X-Forwarded-For
+		header_up -X-Forwarded-Proto
+		header_up -X-Forwarded-Host
+
+		## pass forwarded-for from client
+		header_up X-Custom-Forwarded-For {http.request.header.X-Forwarded-For}
+
+		# response header coming downstream from the backend.
+		header_down -X-Powered-By
+	}
+
+	file_server
+
+	handle_errors {
+		respond "{err.status_code} {err.status_text}"
+	}
+}
