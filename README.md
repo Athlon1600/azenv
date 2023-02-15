@@ -4,9 +4,9 @@ Entire application used to check proxy server statuses.
 
 ## Installation
 
-Docker:
-
 ```shell
+git clone https://github.com/Athlon1600/azenv.git
+cd azenv
 curl -sSL https://get.docker.com/ | sh
 docker compose up --build -d
 ```
