@@ -5,6 +5,7 @@ services:
     image: nginx:latest
     volumes:
       - ./etc/nginx.conf:/etc/nginx/nginx.conf
+      - ./www:/srv
     ports:
       - "80:80"
       - "443:443"
