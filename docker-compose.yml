@@ -1,16 +1,24 @@
 version: "3.9"
 services:
 
-  caddy:
-    image: caddy:latest
-    environment:
-      - SITE=localhost:80
+  nginx:
+    image: nginx:latest
     volumes:
-      - ./etc/Caddyfile:/etc/caddy/Caddyfile
-      - ./www:/srv
+      - ./etc/nginx.conf:/etc/nginx/nginx.conf
     ports:
       - "80:80"
       - "443:443"
+
+#  caddy:
+#    image: caddy:latest
+#    environment:
+#      - SITE=localhost:80
+#    volumes:
+#      - ./etc/Caddyfile:/etc/caddy/Caddyfile
+#      - ./www:/srv
+#    ports:
+#      - "80:80"
+#      - "443:443"
 
   php:
     container_name: php_fpm
@@ -18,5 +26,6 @@ services:
     user: "root:root"
     volumes:
       - ./www:/srv
+      - ./etc/php-fpm.conf:/usr/local/etc/php-fpm.d/zzz-custom.conf
     expose:
       - 9000

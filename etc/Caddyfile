@@ -6,7 +6,7 @@
 	header -Server
 
 	php_fastcgi php_fpm:9000 {
-		trusted_proxies 172.0.0.0/8
+		trusted_proxies 0.0.0.0/0
 
 		# header_up X-Custom-Real-IP {http.request.remote.host}
 
@@ -16,7 +16,7 @@
 		header_up -X-Forwarded-Host
 
 		## pass forwarded-for from client
-		header_up X-Custom-Forwarded-For {http.request.header.X-Forwarded-For}
+		#header_up X-Custom-Forwarded-For {http.request.header.X-Forwarded-For}
 
 		# response header coming downstream from the backend.
 		header_down -X-Powered-By
