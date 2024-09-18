@@ -1,26 +1,33 @@
-## azenv.net
+## PHP Proxy Judge
 
-Entire application used to check proxy server statuses.
+Simple PHP script that returns information about your request. Useful when testing proxy servers.
 
-## Installation
+## :rocket: Deployment
+
+You need to install Docker on your system first:
+
+```shell
+curl -sSL https://get.docker.com/ | sh
+```
+
+next, clone this repo and start the containers:
 
 ```shell
 git clone https://github.com/Athlon1600/azenv.git
 cd azenv
-curl -sSL https://get.docker.com/ | sh
 docker compose up --build -d
 ```
 
+:heavy_check_mark: Your server will now start accepting connections on port 80.
+
 ## Benchmark
 
-> systemctl status php7.4-fpm.service
->
-> ab -n 15000 -c 500 http://azenv.net/test
+```shell
+ab -n 30000 -c 5000 -r http://azenv.net/test
+```
 
-## Scaling
+## :toolbox: Troubleshooting
 
-ulimit -n
+> socket() failed (24: Too many open files) while connecting to upstream
 
-now shows 65536 instead of 1024 = and no problems now
-
-- https://djangoadventures.com/how-to-increase-the-open-files-limit-on-ubuntu/
+Number of open files on your system is too low. Increase it: `ulimit -n 65535`
