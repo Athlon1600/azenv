@@ -9,23 +9,24 @@ services:
     ports:
       - "80:80"
 
-#  caddy:
-#    image: caddy:latest
-#    environment:
-#      - SITE=localhost:80
-#    volumes:
-#      - ./etc/Caddyfile:/etc/caddy/Caddyfile
-#      - ./www:/srv
-#    ports:
-#      - "80:80"
-#      - "443:443"
+  #  caddy:
+  #    image: caddy:latest
+  #    environment:
+  #      - SITE=localhost:80
+  #    volumes:
+  #      - ./etc/Caddyfile:/etc/caddy/Caddyfile
+  #      - ./www:/srv
+  #    ports:
+  #      - "80:80"
+  #      - "443:443"
 
   php:
     container_name: php_fpm
-    image: php:8.3-fpm
-    user: "root:root"
+    build:
+      context: .
     volumes:
       - ./www:/srv
       - ./etc/php-fpm.conf:/usr/local/etc/php-fpm.d/zzz-custom.conf
+      - ./etc/opcache.ini:/usr/local/etc/php/conf.d/opcache.ini
     expose:
       - 9000
