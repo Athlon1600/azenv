@@ -5,7 +5,7 @@ services:
     image: nginx:latest
     volumes:
       - ./etc/nginx.conf:/etc/nginx/nginx.conf
-      - ./www:/srv
+      - ./www:/var/www/html
     ports:
       - "80:80"
 
@@ -30,3 +30,5 @@ services:
       - ./etc/opcache.ini:/usr/local/etc/php/conf.d/opcache.ini
     expose:
       - 9000
+    ports:
+      - "127.0.0.1:9000:9000"
