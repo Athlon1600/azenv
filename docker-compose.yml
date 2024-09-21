@@ -27,8 +27,17 @@ services:
     volumes:
       - ./www:/srv
       - ./etc/php-fpm.conf:/usr/local/etc/php-fpm.d/zzz-custom.conf
-      - ./etc/opcache.ini:/usr/local/etc/php/conf.d/opcache.ini
+      - ./etc/php-custom.ini:/usr/local/etc/php/conf.d/zzz-custom.ini
     expose:
       - 9000
     ports:
       - "127.0.0.1:9000:9000"
+
+#  swoole:
+#    image: phpswoole/swoole:latest
+#    container_name: swoole
+#    volumes:
+#      - ./swoole:/srv
+#    command: php /srv/index.php
+#    ports:
+#      - "9501:9501"
