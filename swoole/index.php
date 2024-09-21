@@ -34,8 +34,8 @@ $http->on('request', function (\Swoole\Http\Request $request, \Swoole\Http\Respo
     $data = [
         'headers' => $request->header,
         'ip' => $client_ip,
-        'cookies' => $request->cookie,
-        'query' => $request->get
+        'cookies' => is_array($request->cookie) ? $request->cookie : [],
+        'query' => is_array($request->get) ? $request->get : [],
     ];
 
     $contents = json_encode($data, JSON_PRETTY_PRINT);
