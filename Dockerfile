@@ -5,9 +5,11 @@ FROM php:8.3-fpm-alpine
 RUN apk add --no-cache ca-certificates curl openssl tar xz
 RUN docker-php-ext-install opcache
 
+RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
+
 WORKDIR /srv
 
 EXPOSE 9000
 
-# run in foreground and run as root
+# run in foreground and allow to run as root
 CMD ["php-fpm", "-F", "-R"]

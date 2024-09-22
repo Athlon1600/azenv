@@ -24,6 +24,8 @@ services:
     container_name: php_fpm
     build:
       context: .
+    sysctls:
+      - net.core.somaxconn=65536
     volumes:
       - ./www:/srv
       - ./etc/php-fpm.conf:/usr/local/etc/php-fpm.d/zzz-custom.conf
