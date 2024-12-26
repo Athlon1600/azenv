@@ -56,7 +56,7 @@ Might have to reboot your system for these changes to take effect.
 A slightly different PHP script that returns user's IP address along with their request headers as JSON response.
 Powered by Swoole server which can easily handle 10K concurrent requests on a 1 GB box.
 
-Uncomment `swoole` service inside `docker-compose.yml`, and then run:
+Uncomment `swoole` service inside `docker-compose.yaml`, and then run:
 
 ```shell
 docker compose up --build -d swoole
