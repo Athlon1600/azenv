@@ -8,6 +8,8 @@ services:
       - ./www:/var/www/html
     ports:
       - "80:80"
+    depends_on:
+      - php
 
   #  caddy:
   #    image: caddy:latest

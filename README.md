@@ -1,6 +1,7 @@
 ## PHP Proxy Judge
 
-Simple PHP script that returns information about your request. Useful when testing proxy servers.
+Simple PHP script that returns information about your request. Useful when testing proxy servers, and when `http://checkip.amazonaws.com` is not enough.
+
 This also serves as a setup for a simple web-server capable of serving thousands of requests per second on a simple VPS.
 
 ## :rocket: Deployment
