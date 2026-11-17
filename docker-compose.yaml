@@ -2,7 +2,7 @@ services:
 
   nginx:
     container_name: nginx
-    image: nginx:latest
+    image: nginx:1.30.6
     volumes:
       - ./etc/nginx.conf:/etc/nginx/nginx.conf
       - ./www:/var/www/html
