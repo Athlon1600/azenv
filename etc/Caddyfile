@@ -1,0 +1,8 @@
+{
+	auto_https disable_redirects
+	http_port 0
+}
+
+secure.azenv.net {
+	reverse_proxy localhost:80
+}
